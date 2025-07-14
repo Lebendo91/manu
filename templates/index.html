@@ -3,796 +3,871 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuella GBEDAN - Portfolio Data Analyst</title>
+    <title>Manuella GBEDAN - Data Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0a0a;
+            color: #ffffff;
             overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 25%, #45B7D1 50%, #96CEB4 75%, #FFEAA7 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
         }
-
-        /* Header */
-        header {
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glassmorphism {
             background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3), 0 0 40px rgba(78, 205, 196, 0.2), 0 0 60px rgba(69, 183, 209, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 107, 107, 0.2), 0 0 50px rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .typing-animation {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .scroll-indicator {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            border-radius: 10px;
+            height: 12px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .project-image {
             width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ffeb3b;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-padding {
             padding: 100px 0;
         }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-        }
-
-        .hero-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.3s forwards;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.6s forwards;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.9s forwards;
-        }
-
-        .btn {
-            padding: 12px 30px;
+        
+        .neon-button {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             border: none;
             border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-            background: white;
-            margin: 2rem 0;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            padding: 15px 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
             position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        /* Formation Section */
-        .formation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .formation-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .formation-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .formation-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .formation-card p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .experience-item {
-            display: flex;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        .experience-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .experience-content {
-            flex: 1;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin: 0 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .experience-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #667eea;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
         }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h4 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .project-content ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .project-content li {
-            margin-bottom: 0.5rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .project-content li::before {
-            content: '✓';
+        
+        .neon-button::before {
+            content: '';
             position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .gains-section {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-
-        .gains-section h5 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-category h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .skill-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skill-list li {
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: #f8f9fa;
-            border-radius: 25px;
-            margin: 0.5rem 0;
-        }
-
-        /* Motivation Section */
-        .motivation {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-        }
-
-        .motivation h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .motivation p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-
-        .availability-info {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .availability-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 0.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #f8f9fa;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-
-        /* CV Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
             top: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
         }
-
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
+        
+        .neon-button:hover::before {
+            left: 100%;
         }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
+        
+        .neon-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
         }
-
-        .close:hover {
-            color: black;
+        
+        .star-rating {
+            display: flex;
+            gap: 5px;
         }
-
-        .cv-section {
+        
+        .star {
+            color: #FFEAA7;
+            font-size: 20px;
+            text-shadow: 0 0 10px rgba(255, 234, 167, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .star:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 20px rgba(255, 234, 167, 0.8);
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+        
+        .section-title {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 3rem;
+            text-align: center;
             margin-bottom: 2rem;
         }
-
-        .cv-section h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 0.5rem;
+        
+        .tag {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.2));
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 25px;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.5rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .experience-timeline::before {
-                left: 20px;
-            }
-            
-            .experience-item {
-                flex-direction: row !important;
-            }
-            
-            .experience-content {
-                margin-left: 50px;
-                margin-right: 0;
-            }
-            
-            .experience-dot {
-                left: 20px;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .footer-dark {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .navbar-dark {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #4ECDC4, #FF6B6B);
         }
     </style>
 </head>
-<body>
-    <header>
-        <nav class="container">
-            <div class="logo">MG</div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#formation">Formation</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-gray-900">
+    <!-- Floating shapes background -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-    <section id="accueil" class="hero">
-        <div class="hero-content">
-            <h1>Manuella GBEDAN</h1>
-            <h2>Future Ingénieur Data Scientist</h2>
-            <p>Passionnée par l'analyse de données et les statistiques, je développe mes compétences en Python, Machine Learning et Data Science. Ma capacité d'observation et d'analyse, renforcée par dix années de natation compétitive, me permet d'aborder chaque projet avec rigueur et détermination.</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="openCV()">Voir mon CV</button>
-                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+    <!-- Navigation -->
+    <nav class="navbar-dark fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-bold text-xl text-white">MG</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="nav-link text-white hover:text-pink-400">Accueil</a>
+                    <a href="#about" class="nav-link text-white hover:text-pink-400">À propos</a>
+                    <a href="#skills" class="nav-link text-white hover:text-pink-400">Compétences</a>
+                    <a href="#experience" class="nav-link text-white hover:text-pink-400">Expérience</a>
+                    <a href="#projects" class="nav-link text-white hover:text-pink-400">Projets</a>
+                    <a href="#contact" class="nav-link text-white hover:text-pink-400">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="gradient-bg min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-4">
+                        Manuella <span class="typing-animation">GBEDAN</span>
+                    </h1>
+                    <h2 class="text-2xl lg:text-3xl font-light mb-6">Data Analyst • Future Data Scientist</h2>
+                    <p class="text-xl mb-8 opacity-90">
+                        "L'analyse des données révèle les tendances qui façonnent l'avenir"
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="mailto:ayadjenou.gbedan@groupe-esigelec.org" 
+                           class="neon-button text-white inline-flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Me contacter
+                        </a>
+                        <a href="tel:+33635919276" 
+                           class="neon-button text-white inline-flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            06 35 91 92 76
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-80 h-80 glassmorphism neon-glow rounded-full flex items-center justify-center">
+                        <i class="fas fa-chart-line text-8xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down text-white text-2xl"></i>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <section id="formation" class="section">
-            <h2 class="section-title">Formation & Disponibilité</h2>
-            <div class="formation-grid">
-                <div class="formation-card">
-                    <h3>Master 2 - Data Science</h3>
-                    <p><strong>ESIGELEC</strong></p>
-                    <p>Contrat d'apprentissage - 24 mois</p>
-                    <p>Rythme: 1 mois entreprise / 1 mois école</p>
-                    <p>Disponible dès <strong>Septembre 2025</strong></p>
-                </div>
-                <div class="formation-card">
-                    <h3>Compétences Techniques</h3>
-                    <p>Java & Langage C</p>
-                    <p>Bases de données SQL & Oracle</p>
-                    <p>Python (Formation autodidacte)</p>
-                    <p>Machine Learning</p>
-                    <p>Excel, PowerPoint avancé</p>
-                </div>
-                <div class="formation-card">
-                    <h3>Mobilité</h3>
-                    <p><strong>Toute la France</strong></p>
-                    <p>Prête à m'adapter à vos besoins</p>
-                    <p>Expérience internationale</p>
-                    <p>Anglais courant</p>
-                </div>
+    <!-- À propos -->
+    <section id="about" class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-title">À propos de moi</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Passionnée par l'analyse des données depuis mon plus jeune âge, j'ai développé une forte capacité d'observation et d'analyse. Mon attrait pour les statistiques et l'exploration des données me pousse à rechercher constamment des tendances et des insights pour optimiser les processus et la prise de décision.
+                </p>
             </div>
-        </section>
-
-        <section id="projets" class="section">
-            <h2 class="section-title">Projets Réalisés</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Analyse des Tendances d'Achat de Maquillage</h3>
-                        <p>Projet Personnel - Python & Data Analysis</p>
-                    </div>
-                    <div class="project-content">
-                        <h4>Objectifs</h4>
-                        <ul>
-                            <li>Analyser 1000 transactions en moins de 2 semaines</li>
-                            <li>Identifier les préférences selon l'âge et le type de peau</li>
-                            <li>Développer un système de recommandation ciblée</li>
-                        </ul>
-                        <h4>Missions réalisées</h4>
-                        <ul>
-                            <li>Création d'un dataset simulé complet</li>
-                            <li>Nettoyage et préparation des données (pandas)</li>
-                            <li>Visualisation des résultats (seaborn, matplotlib)</li>
-                            <li>Gestion de projet avec planning et tableau de bord</li>
-                        </ul>
-                        <div class="gains-section">
-                            <h5>✓ Gains validés</h5>
-                            <ul>
-                                <li>Objectif atteint en 11 jours (délai: 2 semaines)</li>
-                                <li>Identification de tendances claires et exploitables</li>
-                                <li>Création de profils clients types</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Application Interactive Java</h3>
-                        <p>Projet Académique - Développement Full Stack</p>
-                    </div>
-                    <div class="project-content">
-                        <h4>Objectifs</h4>
-                        <ul>
-                            <li>Développer une application Java connectée à Oracle</li>
-                            <li>Respecter le cycle de développement logiciel</li>
-                            <li>Travail en binôme sur 4 mois</li>
-                        </ul>
-                        <h4>Missions réalisées</h4>
-                        <ul>
-                            <li>Modélisation UML complète</li>
-                            <li>Rédaction de documentation technique (DSL, PVL, DCD)</li>
-                            <li>Présentation prototype en anglais</li>
-                            <li>Développement et optimisation</li>
-                        </ul>
-                        <div class="gains-section">
-                            <h5>✓ Gains validés</h5>
-                            <ul>
-                                <li>Maîtrise du processus de développement</li>
-                                <li>Programmation orientée objet avancée</li>
-                                <li>Conception de bases de données Oracle</li>
-                                <li>Gestion de projet et respect des délais</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="competences" class="section">
-            <h2 class="section-title">Compétences</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-icon">🐍</div>
-                    <h3>Programmation</h3>
-                    <ul class="skill-list">
-                        <li>Python (pandas, seaborn, matplotlib)</li>
-                        <li>Java (POO, UML)</li>
-                        <li>Langage C</li>
-                        <li>SQL & Oracle</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon">📊</div>
-                    <h3>Data Science</h3>
-                    <ul class="skill-list">
-                        <li>Machine Learning</li>
-                        <li>Analyse exploratoire (EDA)</li>
-                        <li>Visualisation de données</li>
-                        <li>Statistiques appliquées</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon">🛠️</div>
-                    <h3>Outils</h3>
-                    <ul class="skill-list">
-                        <li>Excel avancé</li>
-                        <li>PowerPoint</li>
-                        <li>Gestion de projet</li>
-                        <li>Documentation technique</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon">💪</div>
-                    <h3>Soft Skills</h3>
-                    <ul class="skill-list">
-                        <li>Rigueur & Détermination</li>
-                        <li>Endurance (10 ans natation)</li>
-                        <li>Capacité d'analyse</li>
-                        <li>Esprit d'équipe</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <section class="motivation">
-        <div class="container">
-            <h2>Ma Motivation</h2>
-            <p>Mon objectif est de vous accompagner dans l'exploitation et l'analyse des données de votre entreprise pour optimiser vos processus et votre prise de décision. Forte de mon expérience en natation compétitive qui m'a appris la rigueur et la persévérance, je souhaite mettre mes compétences au service de votre croissance.</p>
-            <div class="availability-info">
-                <div class="availability-item">
-                    <h3>Alternance</h3>
-                    <p>Septembre 2025</p>
-                    <p>1 mois / 1 mois</p>
-                </div>
-                <div class="availability-item">
-                    <h3>Durée</h3>
-                    <p>24 mois</p>
-                    <p>Master 2</p>
-                </div>
-                <div class="availability-item">
-                    <h3>Mobilité</h3>
-                    <p>Toute la France</p>
-                    <p>Flexible</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <section id="contact" class="contact">
-            <h2 class="section-title">Contact</h2>
-            <p>Une question ? Un projet ? Une opportunité d'alternance ? N'hésitez pas à me contacter !</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <p>ayadjenou.gbedan@groupe-esigelec.org</p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <h3>Téléphone</h3>
-                    <p>06 35 91 92 76</p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">🎓</div>
-                    <h3>École</h3>
-                    <p>ESIGELEC</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- CV Modal -->
-    <div id="cvModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Curriculum Vitae - Manuella GBEDAN</h2>
             
-            <div class="cv-section">
-                <h3>Profil</h3>
-                <p><strong>Manuella GBEDAN</strong> - Future Ingénieur Data Scientist</p>
-                <p>Étudiante en alternance - Master 2 Data Science</p>
-                <p>Disponible dès Septembre 2025 - Mobilité nationale</p>
-            </div>
-
-            <div class="cv-section">
-                <h3>Formation</h3>
-                <p><strong>Master 2 Ingénieur Data Science</strong> - ESIGELEC (En cours)</p>
-                <p>Contrat d'apprentissage - 24 mois</p>
-                <p>Spécialisation: Python, Machine Learning, Bases de données</p>
-                <br>
-                <p><strong>Formation complémentaire</strong></p>
-                <p>• Programmation Python (Autodidacte depuis Janvier 2025)</p>
-                <p>• Java et Langage C</p>
-                <p>• Bases de données SQL et Oracle</p>
-                <p>• Machine Learning appliqué</p>
-            </div>
-
-            <div class="cv-section">
-                <h3>Expérience Professionnelle</h3>
-                <p><strong>Projets Data Science</strong></p>
-                <p>• Analyse des tendances d'achat de maquillage (Python, pandas, seaborn)</p>
-                <p>• Application interactive Java connectée à Oracle</p>
-                <p>• Modélisation UML et documentation technique</p>
-                <br>
-                <p><strong>Expérience Internationale</strong></p>
-                <p>Recommandation MTN-Bénin (voir lettre de recommandation)</p>
-            </div>
-
-            <div class="cv-section">
-                <h3>Compétences Techniques</h3>
-                <p><strong>Langages:</strong> Python, Java, C, SQL</p>
-                <p><strong>Outils Data:</strong> pandas, seaborn, matplotlib, Oracle</p>
-                <p><strong>Méthodologies:</strong> UML, Cycle de développement logiciel</p>
-                <p><strong>Bureautique:</strong> Excel avancé, PowerPoint</p>
-                <p><strong>Langues:</strong> Français, Anglais</p>
-            </div>
-
-            <div class="cv-section">
-                <h3>Atouts Personnels</h3>
-                <p>• 10 années de natation compétitive</p>
-                <p>• Endurance, rigueur et détermination</p>
-                <p>• Forte capacité d'observation et d'analyse</p>
-                <p>• Esprit d'équipe et adaptabilité</p>
-            </div>
-
-            <div class="cv-section">
-                <h3>Objectif Professionnel</h3>
-                <p>Accompagner les entreprises dans l'exploitation et l'analyse de leurs données pour optimiser leurs processus et leur prise de décision. Devenir experte en Data Science dès la fin de mon cursus.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glassmorphism p-6 card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-map-marker-alt text-3xl text-pink-400 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2 text-white">Localisation</h3>
+                        <p class="text-gray-300">Mobilité sur toute la France</p>
+                    </div>
+                </div>
+                
+                <div class="glassmorphism p-6 card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-clock text-3xl text-cyan-400 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2 text-white">Rythme</h3>
+                        <p class="text-gray-300">1 mois entreprise / 1 mois école</p>
+                    </div>
+                </div>
+                
+                <div class="glassmorphism p-6 card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-language text-3xl text-blue-400 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2 text-white">Langues</h3>
+                        <p class="text-gray-300">Français, Anglais</p>
+                    </div>
+                </div>
+                
+                <div class="glassmorphism p-6 card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-graduation-cap text-3xl text-green-400 mb-4"></i>
+                        <h3 class="font-semibold text-lg mb-2 text-white">École</h3>
+                        <p class="text-gray-300">ESIGELEC - Cycle Ingénieur</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="skills" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Compétences</h2>
+                <p class="text-lg text-gray-600">Mes savoir-être et savoir-faire techniques</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Savoir-être -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-heart text-red-500 mr-3"></i>
+                        Savoir-être
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Rigueur</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Détermination</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Adaptabilité</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Esprit d'équipe</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Organisation</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Savoir-faire -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-code text-blue-600 mr-3"></i>
+                        Savoir-faire
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Python</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">SQL / Oracle</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Java</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Machine Learning</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">Excel / PowerPoint</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">UML</span>
+                            <div class="flex space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience -->
+    <section id="experience" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Expérience Professionnelle</h2>
+                <p class="text-lg text-gray-600">Mon parcours et mes expériences</p>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Expérience MTN -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md card-hover">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Stage - Secteur Télécommunications</h3>
+                            <p class="text-lg text-blue-600 font-medium">MTN-Bénin</p>
+                        </div>
+                        <div class="text-gray-500 font-medium">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Stage</span>
+                        </div>
+                    </div>
+                    <div class="text-gray-600">
+                        <p class="mb-2">Expérience professionnelle enrichissante dans le secteur des télécommunications avec obtention d'une lettre de recommandation.</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Analyse des processus opérationnels</li>
+                            <li>Participation aux projets d'amélioration</li>
+                            <li>Collaboration avec les équipes techniques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Projets</h2>
+                <p class="text-lg text-gray-600">Mes réalisations et projets personnels</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Projet 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="project-image bg-gradient-to-r from-pink-200 to-purple-200 flex items-center justify-center">
+                        <i class="fas fa-palette text-6xl text-purple-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Analyse des tendances d'achat de maquillage</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyse d'un dataset de 1000 transactions pour identifier les préférences maquillage selon l'âge et le type de peau. Projet réalisé en 11 jours avec création de profils clients types.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Pandas</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Seaborn</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Matplotlib</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-user mr-2"></i>
+                            Projet Personnel
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="project-image bg-gradient-to-r from-blue-200 to-cyan-200 flex items-center justify-center">
+                        <i class="fas fa-code text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Application Java interactive pour choix des dominantes</h3>
+                        <p class="text-gray-600 mb-4">
+                            Développement d'une application Java connectée à Oracle en 4 mois, incluant modélisation UML, documentation technique complète et évaluation croisée des livrables.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Java</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Oracle</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">UML</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Architecture</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-graduation-cap mr-2"></i>
+                            Projet Académique
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommandations -->
+    <section id="recommendations" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Recommandations</h2>
+                <p class="text-lg text-gray-600">Témoignages et contacts de référence</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Recommandation MTN -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Équipe MTN-Bénin</h3>
+                            <p class="text-gray-600">Secteur Télécommunications</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic">
+                        "Manuella a fait preuve d'un excellent professionnalisme et d'une grande capacité d'adaptation durant son stage. Sa rigueur et sa détermination en font une candidate de choix pour des postes d'analyse."
+                    </blockquote>
+                </div>
+                
+                <!-- Recommandation Académique -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Équipe Pédagogique</h3>
+                            <p class="text-gray-600">ESIGELEC</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic">
+                        "Étudiante rigoureuse et organisée, Manuella démontre une excellente maîtrise des concepts techniques et une approche méthodique dans ses projets. Son esprit d'équipe est remarquable."
+                    </blockquote>
+                </div>
+            </div>
+            
+            <!-- Contacts de référence -->
+            <div class="bg-gray-50 p-8 rounded-xl">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Contacts de référence</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-900 mb-2">Philippe LEFEBVRE</h4>
+                        <p class="text-gray-600 mb-2">Directeur des Relations Entreprises</p>
+                        <p class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-envelope mr-2"></i>
+                            philippe.lefebvre@esigelec.fr
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-900 mb-2">Kristell DUCROCQ</h4>
+                        <p class="text-gray-600 mb-2">Responsable Formation Professionnelle</p>
+                        <p class="text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-envelope mr-2"></i>
+                            kristell.ducrocq@esigelec.fr
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section id="formation" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Formation</h2>
+                <p class="text-lg text-gray-600">Mon parcours académique et formations</p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Formation actuelle -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Cycle Ingénieur Data Science</h3>
+                            <p class="text-lg text-blue-600 font-medium mb-2">ESIGELEC - École Supérieure d'Ingénieurs</p>
+                            <p class="text-gray-600 mb-4">
+                                Formation complète en ingénierie des données incluant programmation (Java, C), bases de données SQL, statistiques, machine learning et analyse de données.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Java</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">SQL</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Statistiques</span>
+                                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 lg:mt-0 lg:ml-8">
+                            <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">
+                                En cours - Master 2
+                            </span>
+                            <p class="text-gray-500 text-sm mt-2">2024-2026</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation autodidacte -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Formation Autodidacte Python & Data Science</h3>
+                            <p class="text-lg text-blue-600 font-medium mb-2">Formation Personnelle</p>
+                            <p class="text-gray-600 mb-4">
+                                Apprentissage autonome du langage Python et des outils de data science, incluant les librairies pandas, matplotlib, seaborn pour l'analyse et la visualisation de données.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Pandas</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Matplotlib</span>
+                                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Seaborn</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 lg:mt-0 lg:ml-8">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">
+                                Depuis Janvier 2025
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact</h2>
+                <p class="text-lg text-gray-600">Discutons de votre projet et de mes compétences</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <a href="mailto:ayadjenou.gbedan@groupe-esigelec.org" 
+                   class="bg-blue-50 hover:bg-blue-100 p-6 rounded-xl text-center transition-colors card-hover">
+                    <i class="fas fa-envelope text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="font-semibold text-gray-900 mb-2">Email</h3>
+                    <p class="text-gray-600 text-sm">ayadjenou.gbedan@groupe-esigelec.org</p>
+                </a>
+                
+                <a href="tel:+33635919276" 
+                   class="bg-green-50 hover:bg-green-100 p-6 rounded-xl text-center transition-colors card-hover">
+                    <i class="fas fa-phone text-3xl text-green-600 mb-4"></i>
+                    <h3 class="font-semibold text-gray-900 mb-2">Téléphone</h3>
+                    <p class="text-gray-600 text-sm">06 35 91 92 76</p>
+                </a>
+                
+                <div class="bg-purple-50 p-6 rounded-xl text-center">
+                    <i class="fas fa-linkedin text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="font-semibold text-gray-900 mb-2">LinkedIn</h3>
+                    <p class="text-gray-600 text-sm">Manuella GBEDAN</p>
+                </div>
+                
+                <div class="bg-orange-50 p-6 rounded-xl text-center">
+                    <i class="fas fa-map-marker-alt text-3xl text-orange-600 mb-4"></i>
+                    <h3 class="font-semibold text-gray-900 mb-2">Localisation</h3>
+                    <p class="text-gray-600 text-sm">Mobilité France</p>
+                </div>
+            </div>
+            
+            <!-- Informations pratiques -->
+            <div class="bg-gray-50 p-8 rounded-xl">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Informations Pratiques</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-calendar-check text-2xl text-blue-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Disponibilité</h4>
+                        <p class="text-gray-600">Dès Septembre 2025</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clock text-2xl text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Rythme souhaité</h4>
+                        <p class="text-gray-600">Contrat d'apprentissage 24 mois<br>1 mois entreprise / 1 mois école</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-location-arrow text-2xl text-purple-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Mobilité</h4>
+                        <p class="text-gray-600">Toute la France</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Manuella GBEDAN</h3>
+                <p class="text-gray-400 mb-6">Data Analyst • Future Data Scientist</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="mailto:ayadjenou.gbedan@groupe-esigelec.org" 
+                       class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-envelope text-xl"></i>
+                    </a>
+                    <a href="tel:+33635919276" 
+                       class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-phone text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-800 pt-8">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Manuella GBEDAN. Tous droits réservés. | Fait avec ❤️ pour l'analyse de données
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Smooth scrolling for navigation links
@@ -809,41 +884,44 @@
             });
         });
 
-        // CV Modal functionality
-        const modal = document.getElementById('cvModal');
-        const closeBtn = document.querySelector('.close');
-
-        function openCV() {
-            modal.style.display = 'block';
-        }
-
-        closeBtn.onclick = function() {
-            modal.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
+        // Typing animation
+        const titles = [
+            "Data Analyst",
+            "Future Data Scientist",
+            "Python Developer",
+            "Data Enthusiast"
+        ];
+        
+        let currentTitle = 0;
+        const titleElement = document.querySelector('.typing-animation');
+        
+        function typeTitle() {
+            if (titleElement) {
+                titleElement.textContent = titles[currentTitle];
+                currentTitle = (currentTitle + 1) % titles.length;
             }
         }
+        
+        // Change title every 3 seconds
+        setInterval(typeTitle, 3000);
 
-        // Header transparency on scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
+            const navbar = document.querySelector('nav');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.classList.add('shadow-md');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                navbar.classList.remove('shadow-md');
             }
         });
 
-        // Animate sections on scroll
+        // Skill bars animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -852,356 +930,13 @@
             });
         }, observerOptions);
 
-        // Observe all sections for animation
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(section);
+        // Observe all cards for animation
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
-
-        // Add animation to cards on hover
-        document.querySelectorAll('.project-card, .skill-category, .formation-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Typing effect for hero title
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.opacity = '1';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', function() {
-            const heroTitle = document.querySelector('.hero-content h1');
-            if (heroTitle) {
-                typeWriter(heroTitle, 'Manuella GBEDAN', 150);
-            }
-        });
-
-        // Dynamic background particles (optional enhancement)
-        function createParticles() {
-            const hero = document.querySelector('.hero');
-            const particlesContainer = document.createElement('div');
-            particlesContainer.style.position = 'absolute';
-            particlesContainer.style.top = '0';
-            particlesContainer.style.left = '0';
-            particlesContainer.style.width = '100%';
-            particlesContainer.style.height = '100%';
-            particlesContainer.style.overflow = 'hidden';
-            particlesContainer.style.zIndex = '-1';
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'absolute';
-                particle.style.width = '2px';
-                particle.style.height = '2px';
-                particle.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-                particle.style.borderRadius = '50%';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                
-                particlesContainer.appendChild(particle);
-            }
-            
-            hero.style.position = 'relative';
-            hero.appendChild(particlesContainer);
-        }
-
-        // Add floating animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float {
-                0%, 100% { transform: translateY(0px); opacity: 0.3; }
-                50% { transform: translateY(-20px); opacity: 0.8; }
-            }
-            
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-            
-            .formation-card:hover {
-                animation: pulse 0.6s ease-in-out;
-            }
-            
-            .skill-category:hover .skill-icon {
-                animation: pulse 0.6s ease-in-out;
-            }
-            
-            /* Mobile responsiveness improvements */
-            @media (max-width: 480px) {
-                .hero-content h1 {
-                    font-size: 2rem;
-                }
-                
-                .hero-content h2 {
-                    font-size: 1.2rem;
-                }
-                
-                .hero-content p {
-                    font-size: 1rem;
-                }
-                
-                .cta-buttons {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .btn {
-                    width: 200px;
-                    text-align: center;
-                }
-                
-                .formation-grid,
-                .projects-grid,
-                .skills-grid {
-                    grid-template-columns: 1fr;
-                }
-                
-                .availability-info {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .availability-item {
-                    width: 100%;
-                    max-width: 300px;
-                }
-                
-                .contact-info {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .contact-item {
-                    width: 100%;
-                    max-width: 300px;
-                }
-                
-                .modal-content {
-                    width: 95%;
-                    margin: 2% auto;
-                    padding: 1rem;
-                }
-            }
-            
-            /* Enhanced hover effects */
-            .project-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-                transform: translateX(-100%);
-                transition: transform 0.6s;
-            }
-            
-            .project-card:hover::before {
-                transform: translateX(100%);
-            }
-            
-            .project-card {
-                position: relative;
-                overflow: hidden;
-            }
-            
-            /* Scroll indicator */
-            .scroll-indicator {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 4px;
-                background: rgba(255, 255, 255, 0.2);
-                z-index: 1001;
-            }
-            
-            .scroll-progress {
-                height: 100%;
-                background: linear-gradient(90deg, #667eea, #764ba2);
-                width: 0%;
-                transition: width 0.3s ease;
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Create scroll indicator
-        const scrollIndicator = document.createElement('div');
-        scrollIndicator.className = 'scroll-indicator';
-        scrollIndicator.innerHTML = '<div class="scroll-progress"></div>';
-        document.body.prepend(scrollIndicator);
-
-        // Update scroll progress
-        window.addEventListener('scroll', function() {
-            const scrollProgress = document.querySelector('.scroll-progress');
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            scrollProgress.style.width = scrollPercent + '%';
-        });
-
-        // Initialize particles effect
-        createParticles();
-
-        // Add click effect to buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.pointerEvents = 'none';
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add ripple animation
-        const rippleStyle = document.createElement('style');
-        rippleStyle.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(rippleStyle);
-
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Add counter animation for experience years
-        function animateCounter(element, start, end, duration) {
-            const startTime = performance.now();
-            
-            function updateCounter(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const current = Math.floor(progress * (end - start) + start);
-                
-                element.textContent = current;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(updateCounter);
-                }
-            }
-            
-            requestAnimationFrame(updateCounter);
-        }
-
-        // Initialize counter animations when sections come into view
-        const experienceObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Find any numbers in the text and animate them
-                    const textContent = entry.target.textContent;
-                    const numbers = textContent.match(/\d+/g);
-                    if (numbers) {
-                        numbers.forEach(num => {
-                            if (parseInt(num) > 1) {
-                                // Create animation for numbers greater than 1
-                                setTimeout(() => {
-                                    animateCounter(entry.target, 0, parseInt(num), 2000);
-                                }, 500);
-                            }
-                        });
-                    }
-                    experienceObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        // Add loading animation
-        window.addEventListener('load', function() {
-            const loader = document.createElement('div');
-            loader.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 9999;
-                opacity: 1;
-                transition: opacity 0.5s ease;
-            `;
-            
-            const loaderContent = document.createElement('div');
-            loaderContent.innerHTML = `
-                <div style="text-align: center; color: white;">
-                    <div style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
-                    <h2>Manuella GBEDAN</h2>
-                    <p>Chargement du portfolio...</p>
-                </div>
-            `;
-            
-            loader.appendChild(loaderContent);
-            document.body.appendChild(loader);
-            
-            const spinStyle = document.createElement('style');
-            spinStyle.textContent = `
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-            `;
-            document.head.appendChild(spinStyle);
-            
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.remove();
-                }, 500);
-            }, 1500);
-        });
-
-        console.log('Portfolio Manuella GBEDAN - Développé avec passion 💜');
     </script>
 </body>
 </html>
