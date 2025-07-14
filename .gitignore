@@ -1,0 +1,7 @@
+﻿static/images/eco_beauty/*.mov
+# Ignorer les fichiers vidéo trop volumineux
+static/images/TC/*.mp4
+static/images/eco_beauty/*.mov
+# Ignorer les fichiers vidéo trop volumineux
+static/images/TC/*.mp4
+static/images/eco_beauty/*.mov
